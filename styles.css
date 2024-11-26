@@ -637,8 +637,22 @@ footer {
 }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-
-
-
-
+.section {
+  opacity: 0; /* Start hidden */
+  transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth transition */
+}
+.section.visible {
+  opacity: 1; /* Make visible */
+  animation: fadeIn 1s forwards; /* Fade in effect */
+}
