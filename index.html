@@ -7,7 +7,7 @@
     <title>Mega Oil - Fueling Your Journey</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
-     <link rel="icon" type="image/png" href="images/It_Ain_t_Free-02-removebg-preview.png">
+     <link rel="icon" type="image/png" href="images/It_Ain_t_Free-02-removebg-preview.png" width="96" height="96">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
     <meta name="description" content="Your website description here">
@@ -33,7 +33,7 @@
             <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
         </nav>
     </header>
-    <section class="hero-section" id="Home">
+    <section class="hero-section section" id="Home">
         <div class="content">
             <h2>Empowering Your engine performance</h2>
             <p>
@@ -64,7 +64,7 @@
         });
     </script>
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="about-section section">
         <div class="about-content">
             <h2>Fueling Your Journey</h2>
             <h3>Convenience and quality, always</h3>
@@ -129,7 +129,7 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section section">
         <div class="contact-details">
             <h3>Contact Us</h3>
             <p><i class="fas fa-map-marker-alt"></i> Nkoma, Mbale, UG</p>
@@ -213,6 +213,30 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.section');
+
+            const options = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Add visible class
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section); // Observe each section
+            });
+        });
+    </script>
 </body>
 
 </html>
